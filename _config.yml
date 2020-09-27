@@ -1,6 +1,6 @@
-title: 'SALOTHEPASSION'
-author: 'SALOTHEPASSION'
-email: 'richthesalo@gmail.com'
+title: SALOTHEPASSION
+author: SALOTHEPASSION
+email: RICHTHESALO@GMAIL.COM
 description: > # this means to ignore newlines until "show_exerpts:"
   我的惆怅几时荡漾起微恙的涟漪<br>
   于风中，于梦里，化作尘泥落红，只余香如故。
@@ -21,7 +21,7 @@ dash:
   date_format: "%a, %b %d, %y"
 
   disqus:
-    shortname: richthesalo
+    shortname: blog-vwbx2ac6qz
 
   # generate social links in footer
   # supported colors: green, red, orange, blue, cyan, pink, teal, yellow, indigo, purple
@@ -35,8 +35,8 @@ dash:
   animation_speed: 50
 
 plugins:
- - jekyll-feed
- - jekyll-seo-tag
- - jekyll-paginate
- - liquid-md5
- - jekyll/tagging
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-paginate
+  - liquid-md5
+  - jekyll/tagging
