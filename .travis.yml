@@ -12,8 +12,8 @@ deploy:
   provider: pages
   local-dir: ./site
   target-branch: master
-  email: richthesalo@gmail.com
-  name: yosalo
+  email: deploy@travis-ci.org
+  name: Deployment Bot
   skip-cleanup: true
   github-token: 067a2bb1c155031877fa57c3cd49ac63fcafa2b0
   keep-history: true
