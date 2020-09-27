@@ -1,11 +1,21 @@
+language: ruby
+cache: bundler
+branches:
+  only:
+  - master
 before_install:
-- gem install bundler -v 2.1.0
+- gem install bundler -v 2.0.1
 script:
-- bundle install
+  - JEKYLL_ENV=production bundle exec jekyll build --destination site
 deploy:
-  provider: rubygems
-  api_key: 420185590a19dd2565484dbad42d148f
-  gem: jekyll-blog
+  repo: yosalo/yosalo.github.io
+  provider: pages
+  local-dir: ./site
+  target-branch: master
+  email: richthesalo@gmail.com
+  name: yosalo
+  skip-cleanup: true
+  github-token: 067a2bb1c155031877fa57c3cd49ac63fcafa2b0
+  keep-history: true
   on:
-    tags: true
-    repo: bitbrain/jekyll-blog
+    branch: master
