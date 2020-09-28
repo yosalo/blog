@@ -7,7 +7,8 @@ comments: true
 
 # About error on jekyll build
 <br>
-**/usr/local/lib/ruby/gems/2.3.0/gems/bundler-1.13.6/lib/bundler/definition.rb:179:in `rescue in specs': Your bundle is locked to minitest (5.8.3), but that version could not be found in any of the sources listed in your Gemfile. If you haven't changed sources, that means the author of minitest (5.8.3) has removed it. You'll need to update your bundle to a different version of minitest (5.8.3) that hasn't been removed in order to install. (Bundler::GemNotFound)
+```bash
+/usr/local/lib/ruby/gems/2.3.0/gems/bundler-1.13.6/lib/bundler/definition.rb:179:in `rescue in specs': Your bundle is locked to minitest (5.8.3), but that version could not be found in any of the sources listed in your Gemfile. If you haven't changed sources, that means the author of minitest (5.8.3) has removed it. You'll need to update your bundle to a different version of minitest (5.8.3) that hasn't been removed in order to install. (Bundler::GemNotFound)
 	from /usr/local/lib/ruby/gems/2.3.0/gems/bundler-1.13.6/lib/bundler/definition.rb:173:in `specs'
 	from /usr/local/lib/ruby/gems/2.3.0/gems/bundler-1.13.6/lib/bundler/definition.rb:233:in `specs_for'
 	from /usr/local/lib/ruby/gems/2.3.0/gems/bundler-1.13.6/lib/bundler/definition.rb:222:in `requested_specs'
@@ -19,7 +20,8 @@ comments: true
 	from /usr/local/bin/jekyll:19:in `load'
 	from /usr/local/bin/jekyll:19:in `<main>'
 	from /usr/local/bin/ruby_executable_hooks:15:in `eval'
-	from /usr/local/bin/ruby_executable_hooks:15:in `<main>'**
+	from /usr/local/bin/ruby_executable_hooks:15:in `<main>'
+```
 <br>
 这个问题是因为bundle版本过低的问题,在终端直接运行以下命令即可
 {% highlight bash %}

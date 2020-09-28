@@ -112,8 +112,15 @@
   .post-date {
     margin-top: 1em;
     @include themed() {
-       color: t('foreground-color-alt');
-    }
+      color: lighten(t('background-color'), 30%);
+   }
+ 
+   & > a {
+     @include themed() {
+          color: lighten(t('background-color'), 50%);
+     }
+     text-decoration: underline;
+   }
     font-size: 12px;
     margin-top: 1em;
     margin-left: 0.5em;
@@ -204,7 +211,8 @@
 
    & > .post-meta {
      @include themed() {
-        color: t('foreground-color-alt');
+        //color: t('foreground-color-alt');
+        color: lighten(t('background-color'), 30%);
      }
      font-size: $small-font-size;
    }
@@ -255,12 +263,12 @@
 .credits {
   font-size: 10px;
   @include themed() {
-     color: lighten(t('background-color'), 5%);
+     color: lighten(t('background-color'), 30%);
   }
 
   & > a {
     @include themed() {
-         color: lighten(t('background-color'), 10%);
+         color: lighten(t('background-color'), 50%);
     }
     text-decoration: underline;
   }
