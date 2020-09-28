@@ -37,5 +37,4 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-paginate
-  - liquid-md5
   - jekyll/tagging
