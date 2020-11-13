@@ -1,10 +1,10 @@
 ---
 layout: post
-title: tools for osx
-tag: osx
+title: tools for macOS
+tag: macOS
 comments: true
-keywords: osx, tool, mac
-description: osx tools for my mbp
+keywords: macOS, tool, mac
+description: macOS tools for my mbp
 ---
 
 
