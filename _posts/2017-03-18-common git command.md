@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 常用GIt命令
+title: 常用Git命令
 tag: git
 comments: true
 ---
