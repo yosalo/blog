@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>常用Git命令 | THEPASSION</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="常用Git命令" />
+<meta name="author" content="THEPASSION" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="基本命令 ```bash 安装Git $ sudo apt install git" />
+<meta property="og:description" content="基本命令 ```bash 安装Git $ sudo apt install git" />
+<meta property="og:site_name" content="THEPASSION" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-03-18T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="常用Git命令" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"THEPASSION"},"dateModified":"2017-03-18T00:00:00+00:00","datePublished":"2017-03-18T00:00:00+00:00","description":"基本命令 ```bash 安装Git $ sudo apt install git","headline":"常用Git命令","mainEntityOfPage":{"@type":"WebPage","@id":"/2017/03/18/common-git-command.html"},"url":"/2017/03/18/common-git-command.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="icon" type="image/png" href="/assets/favicon.png" /><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="THEPASSION" /></head><body><div class="site-header">
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/">THEPASSION<b class="command_prompt"></b><b class="blinking_cursor">_</b></a>
+    <span class="social_links">
+        <a class="color-purple-hover" href="https://github.com/yosalo"><i class="fab fa-github-square"></i></a>
+    </span>
+  </div>
+</div>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        
+  <div class="author-box">
+  <img src="https://0.gravatar.com/avatar/4b93c6af05d990feb3cc652580910761ae7d66b7f208000cb01d78665a501279?size=256" class="author-avatar" alt="Avatar" />
+  我的惆怅几时荡漾起微恙的涟漪<br> 于风中，于梦里，化作尘泥落红，只余香如故。
+
+</div>
+
+
+<div class="post">
+  <h1 class="post-title">常用Git命令</h1>
+  
+  <div class="post-tags">
+      
+      <a class="tag" href="/tag/git/">git</a>
+      
+  </div>
+  
+  <div class="post-date">Published on 18 Mar 2017</div>
+  
+  <h3 id="基本命令">基本命令</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 安装Git</span>
+<span class="nv">$ </span><span class="nb">sudo </span>apt <span class="nb">install </span>git
+
+<span class="c"># 配置个人信息</span>
+<span class="nv">$ </span>git config <span class="nt">--global</span> user.name <span class="s2">"Your Name"</span>
+<span class="nv">$ </span>git config <span class="nt">--global</span> user.email <span class="s2">"email@example.com"</span>
+
+<span class="c"># 切换目录初始化</span>
+<span class="nv">$ </span>git init
+
+<span class="c"># 文件添加到仓库</span>
+<span class="nv">$ </span>git add <span class="nt">-p</span> &lt;file&gt;
+
+<span class="c"># 把文件提交到仓库</span>
+<span class="nv">$ </span>git commit <span class="nt">-m</span> <span class="s2">"add LICENSE"</span>
+
+<span class="c"># 查看仓库当前状态</span>
+<span class="nv">$ </span>git status
+
+<span class="c"># 查看difference</span>
+<span class="nv">$ </span>git diff
+
+<span class="c"># 显示从最近到最远的提交日志</span>
+<span class="nv">$ </span>git log <span class="nt">--pretty</span><span class="o">=</span>oneline <span class="c"># 格式化输出信息</span>
+
+<span class="c"># 版本退回</span>
+<span class="nv">$ </span>git reset <span class="nt">--hard</span> HEAD^ <span class="c"># 当前版本HEAD,上一个版本HEAD^,上上个版本HEAD^^</span>
+<span class="nv">$ </span>git reset <span class="nt">--hard</span> 130f10a <span class="c"># 或HEAD~100</span>
+
+<span class="c"># 查看命令记录</span>
+<span class="nv">$ </span>git reflog
+
+<span class="c"># 丢弃工作区的修改，回到最近一次git commit或git add时的状态：</span>
+<span class="nv">$ </span>git checkout <span class="nt">--</span> README.md
+
+<span class="c"># 把暂存区的修改撤销掉（unstage）</span>
+<span class="nv">$ </span>git reset HEAD READER.md
+
+<span class="c"># 从版本库中删除该文件</span>
+<span class="nv">$ </span>git <span class="nb">rm </span>README.md
+<span class="nv">$ </span>git commit <span class="nt">-m</span> <span class="s2">"remove READER.md"</span>
+
+<span class="c"># 把误删的文件恢复到最新版本，checkout其实用版本库里的版本替换工作区的版本</span>
+<span class="nv">$ </span>git checkout <span class="nt">--</span> README.md
+</code></pre></div></div>
+
+<h3 id="远程仓库">远程仓库</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>ssh-keygen <span class="nt">-t</span> rsa <span class="nt">-C</span> <span class="s2">"youremail@example.com"</span>
+<span class="c"># 测试是否成功</span>
+<span class="nv">$ </span>ssh <span class="nt">-T</span> git@github.com
+
+<span class="c"># 把一个已有的本地仓库与之关联</span>
+<span class="nv">$ </span>git remote add origin git@github.com:Windrivder/Windrivder.git
+
+<span class="c"># 把本地库的所有内容推送到远程库上（推送master分支的内容）</span>
+<span class="nv">$ </span>git push <span class="nt">-u</span> origin master
+
+<span class="c"># 向远程库推送更新</span>
+<span class="nv">$ </span>git push origin master
+
+<span class="c"># 从远程库克隆</span>
+<span class="nv">$ </span>git clone git@github.com:michaelliao/gitskills.git
+</code></pre></div></div>
+
+<h3 id="分支管理">分支管理</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 创建+切换dev分支</span>
+<span class="nv">$ </span>git checkout <span class="nt">-b</span> dev
+
+<span class="c"># 相当于</span>
+<span class="nv">$ </span>git branch dev <span class="c"># 创建分支</span>
+<span class="nv">$ </span>git checkout dev
+
+<span class="c"># 查看当前分支，当前分支前面标有×号</span>
+<span class="nv">$ </span>git branch
+
+<span class="c"># 切换回master分支</span>
+<span class="nv">$ </span>git checkout master
+
+<span class="c"># 合并指定分支到当前分支</span>
+<span class="nv">$ </span>git merge dev
+
+<span class="c"># 删除dev分支</span>
+<span class="nv">$ </span>git branch <span class="nt">-d</span> dev
+
+<span class="c"># 查看分支合并情况</span>
+<span class="nv">$ </span>git log <span class="nt">--graph</span> <span class="nt">--pretty</span><span class="o">=</span>oneline <span class="nt">--abbrev-commit</span>
+<span class="k">*</span>   59bc1cb conflict fixed
+|<span class="se">\</span>
+| <span class="k">*</span> 75a857c AND simple
+<span class="k">*</span> | 400b400 &amp; simple
+|/
+<span class="k">*</span> fec145a branch <span class="nb">test</span>
+
+<span class="c"># 删除feature1分支</span>
+<span class="nv">$ </span>git branch <span class="nt">-d</span> feature1
+
+<span class="c"># 创建并切换dev分支</span>
+<span class="nv">$ </span>git checkout <span class="nt">-b</span> dev
+
+<span class="c"># 修改readme.txt文件，并提交一个新的commit</span>
+<span class="nv">$ </span>git add readme.txt
+<span class="nv">$ </span>git commit <span class="nt">-m</span> <span class="s2">"add merge"</span>
+
+<span class="c"># 切换回master</span>
+<span class="nv">$ </span>git checkout master
+
+<span class="c"># 合并dev分支，请注意--no-ff参数，表示禁用Fast forward</span>
+<span class="nv">$ </span>git merge <span class="nt">--no-ff</span> <span class="nt">-m</span> <span class="s2">"merge with no-ff"</span> dev
+
+<span class="c"># 看看分支历史</span>
+<span class="nv">$ </span>git log <span class="nt">--graph</span> <span class="nt">--pretty</span><span class="o">=</span>oneline <span class="nt">--abbrev-commit</span>
+<span class="k">*</span>   7825a50 merge with no-ff
+|<span class="se">\</span>
+| <span class="k">*</span> 6224937 add merge
+|/
+<span class="k">*</span>   59bc1cb conflict fixed
+
+<span class="c"># 如果需要临时修复Bug，可以把当前工作现场“储藏”起来，等Bug修复后恢复现场后继续工作</span>
+<span class="nv">$ </span>git stash
+
+<span class="c"># 此时查看工作区是干净</span>
+<span class="c"># 切换到需要修复Bug的分支，创建临时分支来修复</span>
+<span class="nv">$ </span>git checkout master
+<span class="nv">$ </span>git checkout <span class="nt">-b</span> issue-101
+
+<span class="c"># 修复完成后切换到master分支，完成合并，删除临时分支</span>
+<span class="nv">$ </span>git checkout master
+<span class="nv">$ </span>git merge <span class="nt">--no-ff</span> <span class="nt">-m</span> <span class="s2">"merged bug fix 101"</span> issue-101
+<span class="nv">$ </span>git branch <span class="nt">-d</span> issue-101
+
+<span class="c"># Bug修复后，切换回dev分支继续干活</span>
+<span class="nv">$ </span>git checkout dev
+
+<span class="c"># 查看工作现场列表</span>
+<span class="nv">$ </span>git stash list
+
+<span class="c"># 恢复工作现场</span>
+<span class="nv">$ </span>git stash pop <span class="c"># 恢复的同时把stash内容也删了</span>
+<span class="nv">$ </span>git stash apply <span class="c"># 恢复，不删除stash的内容，使用git stash drop</span>
+
+<span class="c"># 再次查看工作现场列表，干净</span>
+<span class="nv">$ </span>git stash list
+
+<span class="c"># 可以多次stash，恢复时指定恢复</span>
+<span class="nv">$ </span>git stash apply stash@<span class="o">{</span>0<span class="o">}</span>
+
+<span class="c"># 强行删除一个没有合并过的分支</span>
+<span class="nv">$ </span>git branch <span class="nt">-D</span> &lt;name&gt;
+
+<span class="c"># 要查看远程库的信息</span>
+<span class="nv">$ </span>git remote
+<span class="nv">$ </span>git remote <span class="nt">-v</span>
+
+<span class="c"># 推送其他分支</span>
+<span class="nv">$ </span>git push origin dev
+
+<span class="c"># 从远程库clone，默认情况只能看到master分支，需要在dev分支，必须创建远程origin的dev分支到本地</span>
+<span class="nv">$ </span>git checkout <span class="nt">-b</span> dev origin/dev
+<span class="nv">$ </span>git checkout <span class="nt">-b</span> branch-name origin/branch-name
+<span class="nv">$ </span>git branch <span class="nt">--set-upstream</span> branch-name origin/branch-name <span class="c"># 关联</span>
+
+<span class="c"># 向远程库推送dev有冲突</span>
+<span class="nv">$ </span>git pull <span class="c"># 抓取到本地合并解决冲突，再向远程推送</span>
+<span class="nv">$ </span>git push origin dev
+</code></pre></div></div>
+
+<h3 id="标签管理">标签管理</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 切换到需要打标签的分支</span>
+<span class="nv">$ </span>git branch
+<span class="nv">$ </span>git checkout master
+
+<span class="c"># 创建标签</span>
+<span class="nv">$ </span>git tag v1.0
+
+<span class="c"># 查看所有标签</span>
+<span class="nv">$ </span>git tag
+
+<span class="c"># 给历史提高的commit id打标签</span>
+<span class="nv">$ </span>git log <span class="nt">--pretty</span><span class="o">=</span>oneline <span class="nt">--abbrev-commit</span> <span class="c"># 查看commit id</span>
+<span class="nv">$ </span>git tag v0.9 6224937
+
+<span class="c"># 查看标签信息</span>
+<span class="nv">$ </span>git show v0.9
+
+<span class="c"># 创建带有说明的标签</span>
+<span class="nv">$ </span>git tag <span class="nt">-a</span> v0.1 <span class="nt">-m</span> <span class="s2">"version 0.1 released"</span> 3628164
+
+<span class="c"># 用PGP签名标签</span>
+<span class="nv">$ </span>git tag <span class="nt">-s</span> &lt;tagname&gt; <span class="nt">-m</span> <span class="s2">"blablabla..."</span>
+
+<span class="c"># 推送某个标签到远程</span>
+<span class="nv">$ </span>git push origin v1.0
+
+<span class="c"># 一次性推送全部尚未推送到远程的本地标签</span>
+<span class="nv">$ </span>git push origin <span class="nt">--tags</span>
+
+<span class="c"># 删除远程标签</span>
+<span class="nv">$ </span>git tag <span class="nt">-d</span> v0.9 <span class="c"># 删除本地</span>
+<span class="nv">$ </span>git push origin :refs/tags/v0.9 <span class="c"># 删除远程</span>
+</code></pre></div></div>
+
+<h1 id="自定义-git">自定义 Git</h1>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 显示颜色，会让命令输出看起来更醒目</span>
+<span class="nv">$ </span>git config <span class="nt">--global</span> color.ui <span class="nb">true</span>
+
+<span class="c"># 忽略某些文件时，需要编写.gitignore，然后将.gitignore放到版本库中</span>
+<span class="c"># st就表示status</span>
+<span class="nv">$ </span>git config <span class="nt">--global</span> alias.st status
+
+<span class="c"># 配置一个unstage别名</span>
+<span class="nv">$ </span>git config <span class="nt">--global</span> alias.unstage <span class="s1">'reset HEAD'</span>
+<span class="nv">$ </span>git unstage test.py <span class="c"># 等价于</span>
+<span class="nv">$ </span>git reset HEAD test.py
+
+<span class="c"># 显示最后一次提交信息</span>
+<span class="nv">$ </span>git config <span class="nt">--global</span> alias.last <span class="s1">'log -1'</span>
+
+<span class="c"># log</span>
+git config <span class="nt">--global</span> alias.lg <span class="s2">"log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset' --abbrev-commit"</span>
+<span class="c"># 每个仓库的配置文件放在.git/config</span>
+<span class="c"># 当前用户的配置文件放在用户主目录下的一个隐藏文件.gitconfig中</span>
+</code></pre></div></div>
+
+</div>
+
+
+<div class="comments">
+<div id="disqus_thread"></div>
+<script>
+ var disqus_config = function () {
+     this.page.url = '/2017/03/18/common-git-command.html';
+     this.page.identifier = '/2017/03/18/common git command';
+     this.page.title = '常用Git命令';
+ };
+
+ (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+     var d = document, s = d.createElement('script');
+
+     s.src = '//blog-vwbx2ac6qz.disqus.com/embed.js';
+
+     s.setAttribute('data-timestamp', +new Date());
+     (d.head || d.body).appendChild(s);
+ })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+</div>
+
+
+
+
+<div class="related">
+  <h2>related posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2024/02/18/rvm-install-ruby-on-macOS.html">
+            rvm install ruby on macOS
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2020/11/13/macOS-brew-install-consul.html">
+            macOS brew install consul
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2019/09/13/tools-for-osx.html">
+            tools for macOS
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+  
+  <h2>all tags</h2>
+  <div class="tag-cloud"><a href="/tag/git/" class="set-3">git</a> <a href="/tag/jekyll/" class="set-2">jekyll</a> <a href="/tag/life/" class="set-5">life</a> <a href="/tag/macos/" class="set-3">macos</a> <a href="/tag/rabbitmq/" class="set-1">rabbitmq</a> <a href="/tag/regular/" class="set-1">regular</a></div>
+  
+
+
+
+
+<script>
+  let i = 0;
+  const text = '';
+  const speed = parseInt('50');
+  
+  function typeWriter() {
+    if (i < text.length) {
+      document.getElementById('animated-post-description').innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    }
+  }
+
+  document.getElementById('animated-post-description').style.display = 'initial';
+  typeWriter();
+
+  // Image modal
+  var $imgs = [];
+  $('img').each(function(idx) {
+    var obj = {
+      src: $(this).attr('src')
+    }
+    $imgs.push(obj);
+    var elem = $(this);
+    $(this).click(function() {
+      $('.modal').magnificPopup('open', idx);
+    });
+  });
+
+  $('.modal').magnificPopup({
+    items: $imgs,
+    type: 'image',
+    closeOnContentClick: true,
+    mainClass: 'mfp-img-mobile',
+    image: {
+      verticalFit: true
+    }
+    
+  });
+</script>
+
+      </div>
+    </main><footer class="site-footer">
+  <div class="wrapper">
+    <div class="credits">© 2024 made with <i class="fas fa-heart"></i><div class="toggleWrapper">
+    <input type="checkbox" class="dn" id="theme-toggle" onclick="modeSwitcher()" checked />
+    <label for="theme-toggle" class="toggle">
+    <span class="toggle__handler">
+      <span class="crater crater--1"></span>
+      <span class="crater crater--2"></span>
+      <span class="crater crater--3"></span>
+    </span>
+        <span class="star star--1"></span>
+        <span class="star star--2"></span>
+        <span class="star star--3"></span>
+        <span class="star star--4"></span>
+        <span class="star star--5"></span>
+        <span class="star star--6"></span>
+    </label>
+</div>
+<script type="text/javascript">
+const theme = localStorage.getItem('theme');
+
+if (theme === "light") {
+    document.documentElement.setAttribute('data-theme', 'light');
+} else {
+    document.documentElement.setAttribute('data-theme', 'dark');
+}
+const userPrefers = getComputedStyle(document.documentElement).getPropertyValue('content');
+
+function activateDarkTheme() {
+    document.getElementById('theme-toggle').checked = true;
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('theme--dark');
+    document.documentElement.classList.remove('theme--light');
+	document.getElementById("theme-toggle").className = 'light';
+	window.localStorage.setItem('theme', 'dark');
+}
+
+function activateLightTheme() {
+    document.getElementById('theme-toggle').checked = false;
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.add('theme--light');
+    document.documentElement.classList.remove('theme--dark');
+	document.getElementById("theme-toggle").className = 'dark';
+	window.localStorage.setItem('theme', 'light');
+}
+
+if (theme === "dark") {
+    activateDarkTheme();
+} else if (theme === "light") {
+    activateLightTheme();
+} else if  (userPrefers === "light") {
+    activateDarkTheme();
+} else {
+    activateDarkTheme();
+}
+
+function modeSwitcher() {
+	let currentMode = document.documentElement.getAttribute('data-theme');
+	if (currentMode === "dark") {
+	    activateLightTheme();
+	} else {
+	    activateDarkTheme();
+	}
+}
+</script></div>
+  </div>
+</footer>
+
+
+<script>
+      window.FontAwesomeConfig = {
+        searchPseudoElements: true
+      }
+    </script>
+  </body>
+
+</html>

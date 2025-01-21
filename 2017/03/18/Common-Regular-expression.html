@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Common Regular expression | THEPASSION</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="Common Regular expression" />
+<meta name="author" content="THEPASSION" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Common Regular expression" />
+<meta property="og:description" content="Common Regular expression" />
+<meta property="og:site_name" content="THEPASSION" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-03-18T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Common Regular expression" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"THEPASSION"},"dateModified":"2017-03-18T00:00:00+00:00","datePublished":"2017-03-18T00:00:00+00:00","description":"Common Regular expression","headline":"Common Regular expression","mainEntityOfPage":{"@type":"WebPage","@id":"/2017/03/18/Common-Regular-expression.html"},"url":"/2017/03/18/Common-Regular-expression.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="icon" type="image/png" href="/assets/favicon.png" /><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="THEPASSION" /></head><body><div class="site-header">
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/">THEPASSION<b class="command_prompt"></b><b class="blinking_cursor">_</b></a>
+    <span class="social_links">
+        <a class="color-purple-hover" href="https://github.com/yosalo"><i class="fab fa-github-square"></i></a>
+    </span>
+  </div>
+</div>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        
+  <div class="author-box">
+  <img src="https://0.gravatar.com/avatar/4b93c6af05d990feb3cc652580910761ae7d66b7f208000cb01d78665a501279?size=256" class="author-avatar" alt="Avatar" />
+  我的惆怅几时荡漾起微恙的涟漪<br> 于风中，于梦里，化作尘泥落红，只余香如故。
+
+</div>
+
+
+<div class="post">
+  <h1 class="post-title">Common Regular expression</h1>
+  
+  <div class="post-tags">
+      
+      <a class="tag" href="/tag/regular/">regular</a>
+      
+  </div>
+  
+  <div class="post-date">Published on 18 Mar 2017</div>
+  
+  <p>Common Regular expression</p>
+
+<h2 id="校验数字的表达式">校验数字的表达式</h2>
+<ol>
+  <li>数字：^[0-9]*$</li>
+  <li>n位的数字：^\d{n}$</li>
+  <li>至少n位的数字：^\d{n,}$</li>
+  <li>m-n位的数字：^\d{m,n}$</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>零和非零开头的数字：^(0</td>
+          <td>[1-9][0-9]*)$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>非零开头的最多带两位小数的数字：^([1-9][0-9]*)+(.[0-9]{1,2})?$</li>
+  <li>带1-2位小数的正数或负数：^(-)?\d+(.\d{1,2})?$</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>正数、负数、和小数：^(-</td>
+          <td>+)?\d+(.\d+)?$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>有两位小数的正实数：^[0-9]+(.[0-9]{2})?$</li>
+  <li>有1~3位小数的正实数：^[0-9]+(.[0-9]{1,3})?$</li>
+  <li>非零的正整数：^[1-9]\d<em>$ 或 ^([1-9][0-9]</em>){1,3}$ 或 ^+?[1-9][0-9]*$</li>
+  <li>非零的负整数：^-[1-9][]0-9”<em>$ 或 ^-[1-9]\d</em>$</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>非负整数：^\d+$ 或 ^[1-9]\d*</td>
+          <td>0$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>非正整数：^-[1-9]\d*</td>
+          <td>0$ 或 ^((-\d+)</td>
+          <td>(0+))$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>非负浮点数：^\d+(.\d+)?$ 或 ^[1-9]\d<em>.\d</em></td>
+          <td>0.\d<em>[1-9]\d</em></td>
+          <td>0?.0+</td>
+          <td>0$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>非正浮点数：^((-\d+(.\d+)?)</td>
+          <td>(0+(.0+)?))$ 或 ^(-([1-9]\d<em>.\d</em></td>
+          <td>0.\d<em>[1-9]\d</em>))</td>
+          <td>0?.0+</td>
+          <td>0$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>正浮点数：^[1-9]\d<em>.\d</em></td>
+          <td>0.\d<em>[1-9]\d</em>$ 或 ^(([0-9]+.[0-9]<em>[1-9][0-9]</em>)</td>
+          <td>([0-9]<em>[1-9][0-9]</em>.[0-9]+)</td>
+          <td>([0-9]<em>[1-9][0-9]</em>))$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>负浮点数：^-([1-9]\d<em>.\d</em></td>
+          <td>0.\d<em>[1-9]\d</em>)$ 或 ^(-(([0-9]+.[0-9]<em>[1-9][0-9]</em>)</td>
+          <td>([0-9]<em>[1-9][0-9]</em>.[0-9]+)</td>
+          <td>([0-9]<em>[1-9][0-9]</em>)))$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>浮点数：^(-?\d+)(.\d+)?$ 或 ^-?([1-9]\d<em>.\d</em></td>
+          <td>0.\d<em>[1-9]\d</em></td>
+          <td>0?.0+</td>
+          <td>0)$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ol>
+
+<h2 id="校验字符的表达式">校验字符的表达式</h2>
+<ol>
+  <li>汉字：^[\u4e00-\u9fa5]{0,}$</li>
+  <li>英文和数字：^[A-Za-z0-9]+$ 或 ^[A-Za-z0-9]{4,40}$</li>
+  <li>长度为3-20的所有字符：^.{3,20}$</li>
+  <li>由26个英文字母组成的字符串：^[A-Za-z]+$</li>
+  <li>由26个大写英文字母组成的字符串：^[A-Z]+$</li>
+  <li>由26个小写英文字母组成的字符串：^[a-z]+$</li>
+  <li>由数字和26个英文字母组成的字符串：^[A-Za-z0-9]+$</li>
+  <li>由数字、26个英文字母或者下划线组成的字符串：^\w+$ 或 ^\w{3,20}$</li>
+  <li>中文、英文、数字包括下划线：^[\u4E00-\u9FA5A-Za-z0-9_]+$</li>
+  <li>中文、英文、数字但不包括下划线等符号：^[\u4E00-\u9FA5A-Za-z0-9]+$ 或 ^[\u4E00-\u9FA5A-Za-z0-9]{2,20}$</li>
+  <li>可以输入含有^%&amp;’,;=?$"等字符：[^%&amp;’,;=?$\x22]+</li>
+  <li>禁止输入含有~的字符：[^~\x22]+</li>
+</ol>
+
+<h2 id="特殊需求表达式">特殊需求表达式</h2>
+<ol>
+  <li>Email地址：^\w+([-+.]\w+)<em>@\w+([-.]\w+)</em>.\w+([-.]\w+)*$</li>
+  <li>域名：[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(/.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+/.?</li>
+  <li>InternetURL：[a-zA-z]+://[^\s]* 或 ^http://([\w-]+.)+[\w-]+(/[\w-./?%&amp;=]*)?$</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>手机号码：^(13[0-9]</td>
+          <td>14[5</td>
+          <td>7]</td>
+          <td>15[0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+          <td>5</td>
+          <td>6</td>
+          <td>7</td>
+          <td>8</td>
+          <td>9]</td>
+          <td>18[0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+          <td>5</td>
+          <td>6</td>
+          <td>7</td>
+          <td>8</td>
+          <td>9])\d{8}$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>电话号码(“XXX-XXXXXXX”、”XXXX-XXXXXXXX”、”XXX-XXXXXXX”、”XXX-XXXXXXXX”、”XXXXXXX”和”XXXXXXXX)：^((\d{3,4}-)</td>
+          <td>\d{3.4}-)?\d{7,8}$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>国内电话号码(0511-4405222、021-87888822)：\d{3}-\d{8}</td>
+          <td>\d{4}-\d{7}</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>身份证号(15位、18位数字)：^\d{15}</td>
+          <td>\d{18}$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>短身份证号码(数字、字母x结尾)：^([0-9]){7,18}(x</td>
+          <td>X)?$ 或 ^\d{8,18}</td>
+          <td>[0-9x]{8,18}</td>
+          <td>[0-9X]{8,18}?$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)：^[a-zA-Z][a-zA-Z0-9_]{4,15}$</li>
+  <li>密码(以字母开头，长度在6~18之间，只能包含字母、数字和下划线)：^[a-zA-Z]\w{5,17}$</li>
+  <li>强密码(必须包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间)：^(?=.<em>\d)(?=.</em>[a-z])(?=.*[A-Z]).{8,10}$</li>
+  <li>日期格式：^\d{4}-\d{1,2}-\d{1,2}</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>一年的12个月(01～09和1～12)：^(0?[1-9]</td>
+          <td>1[0-2])$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>一个月的31天(01～09和1～31)：^((0?[1-9])</td>
+          <td>((1</td>
+          <td>2)[0-9])</td>
+          <td>30</td>
+          <td>31)$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ol>
+
+<h2 id="钱的输入格式">钱的输入格式</h2>
+<ol>
+  <li>有四种钱的表示形式我们可以接受:”10000.00” 和 “10,000.00”, 和没有 “分” 的 “10000” 和 “10,000”：^[1-9][0-9]*$</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>这表示任意一个不以0开头的数字,但是,这也意味着一个字符”0”不通过,所以我们采用下面的形式：^(0</td>
+          <td>[1-9][0-9]*)$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>一个0或者一个不以0开头的数字.我们还可以允许开头有一个负号：^(0</td>
+          <td>-?[1-9][0-9]*)$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>这表示一个0或者一个可能为负的开头不为0的数字.让用户以0开头好了.把负号的也去掉,因为钱总不能是负的吧.下面我们要加的是说明可能的小数部分：^[0-9]+(.[0-9]+)?$</li>
+  <li>必须说明的是,小数点后面至少应该有1位数,所以”10.”是不通过的,但是 “10” 和 “10.2” 是通过的：^[0-9]+(.[0-9]{2})?$</li>
+  <li>这样我们规定小数点后面必须有两位,如果你认为太苛刻了,可以这样：^[0-9]+(.[0-9]{1,2})?$</li>
+  <li>这样就允许用户只写一位小数.下面我们该考虑数字中的逗号了,我们可以这样：^[0-9]{1,3}(,[0-9]{3})*(.[0-9]{1,2})?$</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>1到3个数字,后面跟着任意个 逗号+3个数字,逗号成为可选,而不是必须：^([0-9]+</td>
+          <td>[0-9]{1,3}(,[0-9]{3})*)(.[0-9]{1,2})?$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ol>
+
+<blockquote>
+  <p>备注：这就是最终结果了,别忘了<strong>+</strong>可以用*替代如果你觉得空字符串也可以接受的话(奇怪,为什么?)最后,别忘了在用函数时去掉去掉那个反斜杠,一般的错误都在这里</p>
+</blockquote>
+
+<h2 id="其他">其他</h2>
+<ol>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>xml文件：^([a-zA-Z]+-?)+[a-zA-Z0-9]+\.[x</td>
+          <td>X][m</td>
+          <td>M][l</td>
+          <td>L]$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>中文字符的正则表达式：[\u4e00-\u9fa5]</li>
+  <li>双字节字符：[^\x00-\xff] (包括汉字在内，可以用来计算字符串的长度(一个双字节字符长度计2，ASCII字符计1))</li>
+  <li>空白行的正则表达式：\n\s*\r (可以用来删除空白行)</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>HTML标记的正则表达式：&lt;(\S<em>?)[^&gt;]</em>&gt;.*?&lt;/\1&gt;</td>
+          <td>&lt;.*? /&gt; (网上流传的版本太糟糕，上面这个也仅仅能部分，对于复杂的嵌套标记依旧无能为力)</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>首尾空白字符的正则表达式：^\s*</td>
+          <td>\s<em>$或(^\s</em>)</td>
+          <td>(\s*$) (可以用来删除行首行尾的空白字符(包括空格、制表符、换页符等等)，非常有用的表达式)</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>腾讯QQ号：[1-9][0-9]{4,} (腾讯QQ号从10000开始)</li>
+  <li>中国邮政编码：[1-9]\d{5}(?!\d) (中国邮政编码为6位数字)</li>
+  <li>IP地址：\d+.\d+.\d+.\d+ (提取IP地址时有用)</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>IP地址：((?:(?:25[0-5]</td>
+          <td>2[0-4]\d</td>
+          <td>[01]?\d?\d)\.){3}(?:25[0-5]</td>
+          <td>2[0-4]\d</td>
+          <td>[01]?\d?\d))</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ol>
+
+
+</div>
+
+
+<div class="comments">
+<div id="disqus_thread"></div>
+<script>
+ var disqus_config = function () {
+     this.page.url = '/2017/03/18/Common-Regular-expression.html';
+     this.page.identifier = '/2017/03/18/Common Regular expression';
+     this.page.title = 'Common Regular expression';
+ };
+
+ (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+     var d = document, s = d.createElement('script');
+
+     s.src = '//blog-vwbx2ac6qz.disqus.com/embed.js';
+
+     s.setAttribute('data-timestamp', +new Date());
+     (d.head || d.body).appendChild(s);
+ })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+</div>
+
+
+
+
+<div class="related">
+  <h2>related posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2024/02/18/rvm-install-ruby-on-macOS.html">
+            rvm install ruby on macOS
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2020/11/13/macOS-brew-install-consul.html">
+            macOS brew install consul
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2019/09/13/tools-for-osx.html">
+            tools for macOS
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+  
+  <h2>all tags</h2>
+  <div class="tag-cloud"><a href="/tag/git/" class="set-3">git</a> <a href="/tag/jekyll/" class="set-2">jekyll</a> <a href="/tag/life/" class="set-5">life</a> <a href="/tag/macos/" class="set-3">macos</a> <a href="/tag/rabbitmq/" class="set-1">rabbitmq</a> <a href="/tag/regular/" class="set-1">regular</a></div>
+  
+
+
+
+
+<script>
+  let i = 0;
+  const text = '';
+  const speed = parseInt('50');
+  
+  function typeWriter() {
+    if (i < text.length) {
+      document.getElementById('animated-post-description').innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    }
+  }
+
+  document.getElementById('animated-post-description').style.display = 'initial';
+  typeWriter();
+
+  // Image modal
+  var $imgs = [];
+  $('img').each(function(idx) {
+    var obj = {
+      src: $(this).attr('src')
+    }
+    $imgs.push(obj);
+    var elem = $(this);
+    $(this).click(function() {
+      $('.modal').magnificPopup('open', idx);
+    });
+  });
+
+  $('.modal').magnificPopup({
+    items: $imgs,
+    type: 'image',
+    closeOnContentClick: true,
+    mainClass: 'mfp-img-mobile',
+    image: {
+      verticalFit: true
+    }
+    
+  });
+</script>
+
+      </div>
+    </main><footer class="site-footer">
+  <div class="wrapper">
+    <div class="credits">© 2024 made with <i class="fas fa-heart"></i><div class="toggleWrapper">
+    <input type="checkbox" class="dn" id="theme-toggle" onclick="modeSwitcher()" checked />
+    <label for="theme-toggle" class="toggle">
+    <span class="toggle__handler">
+      <span class="crater crater--1"></span>
+      <span class="crater crater--2"></span>
+      <span class="crater crater--3"></span>
+    </span>
+        <span class="star star--1"></span>
+        <span class="star star--2"></span>
+        <span class="star star--3"></span>
+        <span class="star star--4"></span>
+        <span class="star star--5"></span>
+        <span class="star star--6"></span>
+    </label>
+</div>
+<script type="text/javascript">
+const theme = localStorage.getItem('theme');
+
+if (theme === "light") {
+    document.documentElement.setAttribute('data-theme', 'light');
+} else {
+    document.documentElement.setAttribute('data-theme', 'dark');
+}
+const userPrefers = getComputedStyle(document.documentElement).getPropertyValue('content');
+
+function activateDarkTheme() {
+    document.getElementById('theme-toggle').checked = true;
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('theme--dark');
+    document.documentElement.classList.remove('theme--light');
+	document.getElementById("theme-toggle").className = 'light';
+	window.localStorage.setItem('theme', 'dark');
+}
+
+function activateLightTheme() {
+    document.getElementById('theme-toggle').checked = false;
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.add('theme--light');
+    document.documentElement.classList.remove('theme--dark');
+	document.getElementById("theme-toggle").className = 'dark';
+	window.localStorage.setItem('theme', 'light');
+}
+
+if (theme === "dark") {
+    activateDarkTheme();
+} else if (theme === "light") {
+    activateLightTheme();
+} else if  (userPrefers === "light") {
+    activateDarkTheme();
+} else {
+    activateDarkTheme();
+}
+
+function modeSwitcher() {
+	let currentMode = document.documentElement.getAttribute('data-theme');
+	if (currentMode === "dark") {
+	    activateLightTheme();
+	} else {
+	    activateDarkTheme();
+	}
+}
+</script></div>
+  </div>
+</footer>
+
+
+<script>
+      window.FontAwesomeConfig = {
+        searchPseudoElements: true
+      }
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-01-21T00:56:54+00:00</updated><id>/feed.xml</id><title type="html">THEPASSION</title><subtitle>我的惆怅几时荡漾起微恙的涟漪&lt;br&gt; 于风中，于梦里，化作尘泥落红，只余香如故。
+</subtitle><author><name>THEPASSION</name></author><entry><title type="html">rvm install ruby on macOS</title><link href="/2024/02/18/rvm-install-ruby-on-macOS.html" rel="alternate" type="text/html" title="rvm install ruby on macOS" /><published>2024-02-18T00:00:00+00:00</published><updated>2024-02-18T00:00:00+00:00</updated><id>/2024/02/18/rvm%20install%20ruby%20on%20macOS</id><content type="html" xml:base="/2024/02/18/rvm-install-ruby-on-macOS.html"><![CDATA[<h2 id="install-rvm">Install rvm</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>rvm
+</code></pre></div></div>
+
+<h2 id="install-ruby">Install ruby</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rvm <span class="nb">install </span>ruby-3.3.0 <span class="nt">--with-openssl-dir</span><span class="o">=</span><span class="s1">'brew --prefix openssl'</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rvm reinstall 3.3.0 <span class="nt">--with-openssl-dir</span><span class="o">=</span><span class="sb">`</span>brew <span class="nt">--prefix</span> openssl<span class="sb">`</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>gem <span class="nb">install </span>rails
+gem update <span class="nt">--system</span>
+</code></pre></div></div>]]></content><author><name>THEPASSION</name></author><category term="macos" /><summary type="html"><![CDATA[rvm install ruby on macOS]]></summary></entry><entry><title type="html">macOS brew install consul</title><link href="/2020/11/13/macOS-brew-install-consul.html" rel="alternate" type="text/html" title="macOS brew install consul" /><published>2020-11-13T00:00:00+00:00</published><updated>2020-11-13T00:00:00+00:00</updated><id>/2020/11/13/macOS%20brew%20install%20consul</id><content type="html" xml:base="/2020/11/13/macOS-brew-install-consul.html"><![CDATA[<h2 id="安装consul">安装Consul</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  brew <span class="nb">install </span>consul
+</code></pre></div></div>
+
+<h2 id="配置consul启动项">配置Consul启动项</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  vim /usr/local/opt/consul/homebrew.mxcl.consul.plist
+</code></pre></div></div>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+    <span class="cp">&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span>
+    <span class="nt">&lt;plist</span> <span class="na">version=</span><span class="s">"1.0"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;dict&gt;</span>
+        <span class="nt">&lt;key&gt;</span>KeepAlive<span class="nt">&lt;/key&gt;</span>
+        <span class="nt">&lt;dict&gt;</span>
+        <span class="nt">&lt;key&gt;</span>SuccessfulExit<span class="nt">&lt;/key&gt;</span>
+        <span class="nt">&lt;false/&gt;</span>
+        <span class="nt">&lt;/dict&gt;</span>
+        <span class="nt">&lt;key&gt;</span>Label<span class="nt">&lt;/key&gt;</span>
+        <span class="nt">&lt;string&gt;</span>homebrew.mxcl.consul<span class="nt">&lt;/string&gt;</span>
+        <span class="nt">&lt;key&gt;</span>ProgramArguments<span class="nt">&lt;/key&gt;</span>
+        <span class="nt">&lt;array&gt;</span>
+        <span class="nt">&lt;string&gt;</span>/usr/local/opt/consul/bin/consul<span class="nt">&lt;/string&gt;</span>
+        <span class="nt">&lt;string&gt;</span>agent<span class="nt">&lt;/string&gt;</span>
+        <span class="nt">&lt;string&gt;</span>-server<span class="nt">&lt;/string&gt;</span>
+        <span class="nt">&lt;string&gt;</span>-bind<span class="nt">&lt;/string&gt;</span>
+        <span class="nt">&lt;string&gt;</span>127.0.0.1<span class="nt">&lt;/string&gt;</span>
+        <span class="nt">&lt;string&gt;</span>-data-dir<span class="nt">&lt;/string&gt;</span>
+        <span class="nt">&lt;string&gt;</span>./data<span class="nt">&lt;/string&gt;</span>
+        <span class="nt">&lt;string&gt;</span>-ui<span class="nt">&lt;/string&gt;</span>
+        <span class="nt">&lt;/array&gt;</span>
+        <span class="nt">&lt;key&gt;</span>RunAtLoad<span class="nt">&lt;/key&gt;</span>
+        <span class="nt">&lt;true/&gt;</span>
+        <span class="nt">&lt;key&gt;</span>WorkingDirectory<span class="nt">&lt;/key&gt;</span>
+        <span class="nt">&lt;string&gt;</span>/usr/local/var<span class="nt">&lt;/string&gt;</span>
+        <span class="nt">&lt;key&gt;</span>StandardErrorPath<span class="nt">&lt;/key&gt;</span>
+        <span class="nt">&lt;string&gt;</span>/usr/local/var/log/consul.log<span class="nt">&lt;/string&gt;</span>
+        <span class="nt">&lt;key&gt;</span>StandardOutPath<span class="nt">&lt;/key&gt;</span>
+        <span class="nt">&lt;string&gt;</span>/usr/local/var/log/consul.log<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;/dict&gt;</span>
+    <span class="nt">&lt;/plist&gt;</span>
+</code></pre></div></div>
+
+<h2 id="重启consul">重启Consul</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  brew services restart consul
+</code></pre></div></div>]]></content><author><name>THEPASSION</name></author><category term="macos" /><summary type="html"><![CDATA[brew install consul on macOS]]></summary></entry><entry><title type="html">tools for macOS</title><link href="/2019/09/13/tools-for-osx.html" rel="alternate" type="text/html" title="tools for macOS" /><published>2019-09-13T00:00:00+00:00</published><updated>2019-09-13T00:00:00+00:00</updated><id>/2019/09/13/tools%20for%20osx</id><content type="html" xml:base="/2019/09/13/tools-for-osx.html"><![CDATA[<h1 id="tools-list">tools list</h1>
+
+<h2 id="startup">startup</h2>
+<ul>
+  <li>hammerspoon</li>
+  <li>dropbox</li>
+  <li>contexts</li>
+  <li>cheatsheet</li>
+  <li>annotate</li>
+  <li>alfred 4</li>
+  <li>cleanmymacx</li>
+  <li>jetbrains toolbox</li>
+  <li>1password</li>
+  <li>istat menus</li>
+</ul>
+
+<h2 id="daily">daily</h2>
+<ul>
+  <li>vox</li>
+  <li>chrome</li>
+  <li>firefox</li>
+  <li>microsoft world/excel</li>
+  <li>downie 3</li>
+  <li>thunder</li>
+  <li>wechat/qq</li>
+  <li>iina</li>
+  <li>pdf expert</li>
+  <li>ip scanner</li>
+  <li>iterm</li>
+  <li>proxifier</li>
+  <li>karabiner-elements</li>
+  <li>neteasemusic</li>
+  <li>reeder</li>
+  <li>mweb</li>
+  <li>things</li>
+  <li>test2image</li>
+</ul>
+
+<h2 id="terminal">terminal</h2>
+<ul>
+  <li>oh my zsh</li>
+  <li>ctop</li>
+  <li>fzy</li>
+  <li>autojump</li>
+  <li>telnet</li>
+  <li>tmux</li>
+  <li>wget</li>
+  <li>yarn</li>
+  <li>node</li>
+  <li>shadowsocks-libev</li>
+  <li>ydict</li>
+  <li>jq</li>
+  <li>nuget</li>
+  <li>gopass</li>
+  <li>python</li>
+</ul>
+
+<h2 id="work">work</h2>
+<ul>
+  <li>docker</li>
+  <li>vscode</li>
+  <li>sublime text</li>
+  <li>datagrip</li>
+  <li>postman</li>
+</ul>]]></content><author><name>THEPASSION</name></author><category term="macos" /><summary type="html"><![CDATA[macOS tools for my mbp]]></summary></entry><entry><title type="html">clear git branch commit</title><link href="/2019/09/10/clear-git-branch-commit.html" rel="alternate" type="text/html" title="clear git branch commit" /><published>2019-09-10T00:00:00+00:00</published><updated>2019-09-10T00:00:00+00:00</updated><id>/2019/09/10/clear%20git%20branch%20commit</id><content type="html" xml:base="/2019/09/10/clear-git-branch-commit.html"><![CDATA[<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">--orphan</span> latest_branch
+
+git add <span class="nt">-A</span>
+
+git commit <span class="nt">-am</span> <span class="s2">"commit message"</span>
+
+git branch <span class="nt">-D</span> master
+
+git branch <span class="nt">-m</span> master
+
+git push <span class="nt">-f</span> origin master
+</code></pre></div></div>]]></content><author><name>THEPASSION</name></author><category term="git" /><summary type="html"><![CDATA[clear git branch commit]]></summary></entry><entry><title type="html">Like u</title><link href="/2017/06/09/Like-u.html" rel="alternate" type="text/html" title="Like u" /><published>2017-06-09T00:00:00+00:00</published><updated>2017-06-09T00:00:00+00:00</updated><id>/2017/06/09/Like%20u</id><content type="html" xml:base="/2017/06/09/Like-u.html"><![CDATA[<p><strong>我知道我们这辈子可能永远见不了面了<br />
+但是街角闹腾的人声像你<br />
+床角散落的余味像你<br />
+人群中散落的发香像你<br />
+偶然闯入耳膜的笑声像你<br />
+我迷茫灰暗的青春只有你</strong><br /></p>]]></content><author><name>THEPASSION</name></author><category term="life" /><summary type="html"><![CDATA[我知道我们这辈子可能永远见不了面了 但是街角闹腾的人声像你 床角散落的余味像你 人群中散落的发香像你 偶然闯入耳膜的笑声像你 我迷茫灰暗的青春只有你]]></summary></entry><entry><title type="html">black</title><link href="/2017/06/09/black.html" rel="alternate" type="text/html" title="black" /><published>2017-06-09T00:00:00+00:00</published><updated>2017-06-09T00:00:00+00:00</updated><id>/2017/06/09/black</id><content type="html" xml:base="/2017/06/09/black.html"><![CDATA[<p><strong>找一个可以掩埋自己的角落<br />
+蜷缩着身体紧紧的倚着墙壁<br />
+至少这样可以让我又依靠感<br />
+把脸庞深深的掩在双腿之下<br />
+隐忍痛苦的黄色脸庞捂着如血色的红<br />
+耳边传来匆匆的脚步声和暴动嘈杂的狂吼<br />
+我看到一张张他们在一张张平和微笑的脸皮内<br />
+一个个强忍着痛苦的脸庞麻木的扭曲<br />
+面前充斥着朦胧虚幻的黑色路口<br />
+他们强压着胸膛倒在地上疼痛的呻吟<br />
+冥冥中隐匿身躯中的欲望急速冲出穿过黑色路口<br />
+目光呆滞望着望着<br />
+在绚烂霓虹的照射下变得晶莹剔透<br />
+轰然间爆碎喷射在面前</strong><br /></p>]]></content><author><name>THEPASSION</name></author><category term="life" /><summary type="html"><![CDATA[找一个可以掩埋自己的角落 蜷缩着身体紧紧的倚着墙壁 至少这样可以让我又依靠感 把脸庞深深的掩在双腿之下 隐忍痛苦的黄色脸庞捂着如血色的红 耳边传来匆匆的脚步声和暴动嘈杂的狂吼 我看到一张张他们在一张张平和微笑的脸皮内 一个个强忍着痛苦的脸庞麻木的扭曲 面前充斥着朦胧虚幻的黑色路口 他们强压着胸膛倒在地上疼痛的呻吟 冥冥中隐匿身躯中的欲望急速冲出穿过黑色路口 目光呆滞望着望着 在绚烂霓虹的照射下变得晶莹剔透 轰然间爆碎喷射在面前]]></summary></entry><entry><title type="html">私奔</title><link href="/2017/06/09/%E7%A7%81%E5%A5%94.html" rel="alternate" type="text/html" title="私奔" /><published>2017-06-09T00:00:00+00:00</published><updated>2017-06-09T00:00:00+00:00</updated><id>/2017/06/09/%E7%A7%81%E5%A5%94</id><content type="html" xml:base="/2017/06/09/%E7%A7%81%E5%A5%94.html"><![CDATA[<p><em>是爱</em><br />
+<em>是癌</em><br />
+<em>是如来</em><br /></p>]]></content><author><name>THEPASSION</name></author><category term="life" /><summary type="html"><![CDATA[是爱 是癌 是如来]]></summary></entry><entry><title type="html">浮生若梦</title><link href="/2017/06/08/%E6%B5%AE%E7%94%9F%E8%8B%A5%E6%A2%A6.html" rel="alternate" type="text/html" title="浮生若梦" /><published>2017-06-08T00:00:00+00:00</published><updated>2017-06-08T00:00:00+00:00</updated><id>/2017/06/08/%E6%B5%AE%E7%94%9F%E8%8B%A5%E6%A2%A6</id><content type="html" xml:base="/2017/06/08/%E6%B5%AE%E7%94%9F%E8%8B%A5%E6%A2%A6.html"><![CDATA[<h1 id="殇夜">殇夜</h1>
+
+<p><strong>眼前流乱满目萎靡的奢洛色彩，肆意张扬的闪耀着<br />
+却在人流冷清的朱门前，煞是奢靡<br />
+路边宽敞的大道上摇曳着弱弱米黄的灯光<br />
+矗立着一道落寞的身影<br />
+皎洁的月光直落落的洒在她的身上<br />
+她明媚的双眼中流露出落寞的目光<br />
+是否她也在思念着远方的他呢<br />
+申时，天渐渐寒了起来<br />
+她迈着轻巧的小步走到床前<br />
+轻俯而卧。</strong>
+<br /></p>
+<h1 id="逝日">逝日</h1>
+
+<p><strong>天空中泛着一丝弱弱的微白<br />
+偶尔不擅于安静的麻雀也轻点而过<br />
+稀散的路人慵懒的走在小道上<br />
+风起，零碎的思念泛集成思<br />
+随着时间的洪流泛滥而去<br /></strong>
+<br />
+以此献给那些心中有着思念的人。</p>]]></content><author><name>THEPASSION</name></author><category term="life" /><summary type="html"><![CDATA[殇夜]]></summary></entry><entry><title type="html">broke heart</title><link href="/2017/06/07/broke-heart.html" rel="alternate" type="text/html" title="broke heart" /><published>2017-06-07T00:00:00+00:00</published><updated>2017-06-07T00:00:00+00:00</updated><id>/2017/06/07/broke%20heart</id><content type="html" xml:base="/2017/06/07/broke-heart.html"><![CDATA[<p><strong>我想我不是个疯狂的人<br />
+可是我心中却隐然存在那种疯狂<br />
+在耳边传来强烈暴躁的音乐盒歇斯底里的嘶吼时<br />
+冥冥中看到那个扭曲夭折的路口<br />
+在陌生的路上看到一张张那隐忍着痛苦的脸庞<br />
+胸口中那暴动的情绪奔涌而出<br />
+我在看到自己那隐藏自己身躯中最初梦想<br />
+急速的冲在我的面前<br />
+在我的面前停留着，停留着<br />
+刹那间轰然粉碎,消失的无影无踪</strong><br /></p>]]></content><author><name>THEPASSION</name></author><category term="life" /><summary type="html"><![CDATA[我想我不是个疯狂的人 可是我心中却隐然存在那种疯狂 在耳边传来强烈暴躁的音乐盒歇斯底里的嘶吼时 冥冥中看到那个扭曲夭折的路口 在陌生的路上看到一张张那隐忍着痛苦的脸庞 胸口中那暴动的情绪奔涌而出 我在看到自己那隐藏自己身躯中最初梦想 急速的冲在我的面前 在我的面前停留着，停留着 刹那间轰然粉碎,消失的无影无踪]]></summary></entry><entry><title type="html">Common Regular expression</title><link href="/2017/03/18/Common-Regular-expression.html" rel="alternate" type="text/html" title="Common Regular expression" /><published>2017-03-18T00:00:00+00:00</published><updated>2017-03-18T00:00:00+00:00</updated><id>/2017/03/18/Common%20Regular%20expression</id><content type="html" xml:base="/2017/03/18/Common-Regular-expression.html"><![CDATA[<p>Common Regular expression</p>
+
+<h2 id="校验数字的表达式">校验数字的表达式</h2>
+<ol>
+  <li>数字：^[0-9]*$</li>
+  <li>n位的数字：^\d{n}$</li>
+  <li>至少n位的数字：^\d{n,}$</li>
+  <li>m-n位的数字：^\d{m,n}$</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>零和非零开头的数字：^(0</td>
+          <td>[1-9][0-9]*)$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>非零开头的最多带两位小数的数字：^([1-9][0-9]*)+(.[0-9]{1,2})?$</li>
+  <li>带1-2位小数的正数或负数：^(-)?\d+(.\d{1,2})?$</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>正数、负数、和小数：^(-</td>
+          <td>+)?\d+(.\d+)?$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>有两位小数的正实数：^[0-9]+(.[0-9]{2})?$</li>
+  <li>有1~3位小数的正实数：^[0-9]+(.[0-9]{1,3})?$</li>
+  <li>非零的正整数：^[1-9]\d<em>$ 或 ^([1-9][0-9]</em>){1,3}$ 或 ^+?[1-9][0-9]*$</li>
+  <li>非零的负整数：^-[1-9][]0-9”<em>$ 或 ^-[1-9]\d</em>$</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>非负整数：^\d+$ 或 ^[1-9]\d*</td>
+          <td>0$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>非正整数：^-[1-9]\d*</td>
+          <td>0$ 或 ^((-\d+)</td>
+          <td>(0+))$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>非负浮点数：^\d+(.\d+)?$ 或 ^[1-9]\d<em>.\d</em></td>
+          <td>0.\d<em>[1-9]\d</em></td>
+          <td>0?.0+</td>
+          <td>0$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>非正浮点数：^((-\d+(.\d+)?)</td>
+          <td>(0+(.0+)?))$ 或 ^(-([1-9]\d<em>.\d</em></td>
+          <td>0.\d<em>[1-9]\d</em>))</td>
+          <td>0?.0+</td>
+          <td>0$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>正浮点数：^[1-9]\d<em>.\d</em></td>
+          <td>0.\d<em>[1-9]\d</em>$ 或 ^(([0-9]+.[0-9]<em>[1-9][0-9]</em>)</td>
+          <td>([0-9]<em>[1-9][0-9]</em>.[0-9]+)</td>
+          <td>([0-9]<em>[1-9][0-9]</em>))$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>负浮点数：^-([1-9]\d<em>.\d</em></td>
+          <td>0.\d<em>[1-9]\d</em>)$ 或 ^(-(([0-9]+.[0-9]<em>[1-9][0-9]</em>)</td>
+          <td>([0-9]<em>[1-9][0-9]</em>.[0-9]+)</td>
+          <td>([0-9]<em>[1-9][0-9]</em>)))$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>浮点数：^(-?\d+)(.\d+)?$ 或 ^-?([1-9]\d<em>.\d</em></td>
+          <td>0.\d<em>[1-9]\d</em></td>
+          <td>0?.0+</td>
+          <td>0)$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ol>
+
+<h2 id="校验字符的表达式">校验字符的表达式</h2>
+<ol>
+  <li>汉字：^[\u4e00-\u9fa5]{0,}$</li>
+  <li>英文和数字：^[A-Za-z0-9]+$ 或 ^[A-Za-z0-9]{4,40}$</li>
+  <li>长度为3-20的所有字符：^.{3,20}$</li>
+  <li>由26个英文字母组成的字符串：^[A-Za-z]+$</li>
+  <li>由26个大写英文字母组成的字符串：^[A-Z]+$</li>
+  <li>由26个小写英文字母组成的字符串：^[a-z]+$</li>
+  <li>由数字和26个英文字母组成的字符串：^[A-Za-z0-9]+$</li>
+  <li>由数字、26个英文字母或者下划线组成的字符串：^\w+$ 或 ^\w{3,20}$</li>
+  <li>中文、英文、数字包括下划线：^[\u4E00-\u9FA5A-Za-z0-9_]+$</li>
+  <li>中文、英文、数字但不包括下划线等符号：^[\u4E00-\u9FA5A-Za-z0-9]+$ 或 ^[\u4E00-\u9FA5A-Za-z0-9]{2,20}$</li>
+  <li>可以输入含有^%&amp;’,;=?$"等字符：[^%&amp;’,;=?$\x22]+</li>
+  <li>禁止输入含有~的字符：[^~\x22]+</li>
+</ol>
+
+<h2 id="特殊需求表达式">特殊需求表达式</h2>
+<ol>
+  <li>Email地址：^\w+([-+.]\w+)<em>@\w+([-.]\w+)</em>.\w+([-.]\w+)*$</li>
+  <li>域名：[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(/.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+/.?</li>
+  <li>InternetURL：[a-zA-z]+://[^\s]* 或 ^http://([\w-]+.)+[\w-]+(/[\w-./?%&amp;=]*)?$</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>手机号码：^(13[0-9]</td>
+          <td>14[5</td>
+          <td>7]</td>
+          <td>15[0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+          <td>5</td>
+          <td>6</td>
+          <td>7</td>
+          <td>8</td>
+          <td>9]</td>
+          <td>18[0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+          <td>5</td>
+          <td>6</td>
+          <td>7</td>
+          <td>8</td>
+          <td>9])\d{8}$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>电话号码(“XXX-XXXXXXX”、”XXXX-XXXXXXXX”、”XXX-XXXXXXX”、”XXX-XXXXXXXX”、”XXXXXXX”和”XXXXXXXX)：^((\d{3,4}-)</td>
+          <td>\d{3.4}-)?\d{7,8}$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>国内电话号码(0511-4405222、021-87888822)：\d{3}-\d{8}</td>
+          <td>\d{4}-\d{7}</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>身份证号(15位、18位数字)：^\d{15}</td>
+          <td>\d{18}$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>短身份证号码(数字、字母x结尾)：^([0-9]){7,18}(x</td>
+          <td>X)?$ 或 ^\d{8,18}</td>
+          <td>[0-9x]{8,18}</td>
+          <td>[0-9X]{8,18}?$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)：^[a-zA-Z][a-zA-Z0-9_]{4,15}$</li>
+  <li>密码(以字母开头，长度在6~18之间，只能包含字母、数字和下划线)：^[a-zA-Z]\w{5,17}$</li>
+  <li>强密码(必须包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间)：^(?=.<em>\d)(?=.</em>[a-z])(?=.*[A-Z]).{8,10}$</li>
+  <li>日期格式：^\d{4}-\d{1,2}-\d{1,2}</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>一年的12个月(01～09和1～12)：^(0?[1-9]</td>
+          <td>1[0-2])$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>一个月的31天(01～09和1～31)：^((0?[1-9])</td>
+          <td>((1</td>
+          <td>2)[0-9])</td>
+          <td>30</td>
+          <td>31)$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ol>
+
+<h2 id="钱的输入格式">钱的输入格式</h2>
+<ol>
+  <li>有四种钱的表示形式我们可以接受:”10000.00” 和 “10,000.00”, 和没有 “分” 的 “10000” 和 “10,000”：^[1-9][0-9]*$</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>这表示任意一个不以0开头的数字,但是,这也意味着一个字符”0”不通过,所以我们采用下面的形式：^(0</td>
+          <td>[1-9][0-9]*)$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>一个0或者一个不以0开头的数字.我们还可以允许开头有一个负号：^(0</td>
+          <td>-?[1-9][0-9]*)$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>这表示一个0或者一个可能为负的开头不为0的数字.让用户以0开头好了.把负号的也去掉,因为钱总不能是负的吧.下面我们要加的是说明可能的小数部分：^[0-9]+(.[0-9]+)?$</li>
+  <li>必须说明的是,小数点后面至少应该有1位数,所以”10.”是不通过的,但是 “10” 和 “10.2” 是通过的：^[0-9]+(.[0-9]{2})?$</li>
+  <li>这样我们规定小数点后面必须有两位,如果你认为太苛刻了,可以这样：^[0-9]+(.[0-9]{1,2})?$</li>
+  <li>这样就允许用户只写一位小数.下面我们该考虑数字中的逗号了,我们可以这样：^[0-9]{1,3}(,[0-9]{3})*(.[0-9]{1,2})?$</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>1到3个数字,后面跟着任意个 逗号+3个数字,逗号成为可选,而不是必须：^([0-9]+</td>
+          <td>[0-9]{1,3}(,[0-9]{3})*)(.[0-9]{1,2})?$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ol>
+
+<blockquote>
+  <p>备注：这就是最终结果了,别忘了<strong>+</strong>可以用*替代如果你觉得空字符串也可以接受的话(奇怪,为什么?)最后,别忘了在用函数时去掉去掉那个反斜杠,一般的错误都在这里</p>
+</blockquote>
+
+<h2 id="其他">其他</h2>
+<ol>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>xml文件：^([a-zA-Z]+-?)+[a-zA-Z0-9]+\.[x</td>
+          <td>X][m</td>
+          <td>M][l</td>
+          <td>L]$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>中文字符的正则表达式：[\u4e00-\u9fa5]</li>
+  <li>双字节字符：[^\x00-\xff] (包括汉字在内，可以用来计算字符串的长度(一个双字节字符长度计2，ASCII字符计1))</li>
+  <li>空白行的正则表达式：\n\s*\r (可以用来删除空白行)</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>HTML标记的正则表达式：&lt;(\S<em>?)[^&gt;]</em>&gt;.*?&lt;/\1&gt;</td>
+          <td>&lt;.*? /&gt; (网上流传的版本太糟糕，上面这个也仅仅能部分，对于复杂的嵌套标记依旧无能为力)</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>首尾空白字符的正则表达式：^\s*</td>
+          <td>\s<em>$或(^\s</em>)</td>
+          <td>(\s*$) (可以用来删除行首行尾的空白字符(包括空格、制表符、换页符等等)，非常有用的表达式)</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>腾讯QQ号：[1-9][0-9]{4,} (腾讯QQ号从10000开始)</li>
+  <li>中国邮政编码：[1-9]\d{5}(?!\d) (中国邮政编码为6位数字)</li>
+  <li>IP地址：\d+.\d+.\d+.\d+ (提取IP地址时有用)</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>IP地址：((?:(?:25[0-5]</td>
+          <td>2[0-4]\d</td>
+          <td>[01]?\d?\d)\.){3}(?:25[0-5]</td>
+          <td>2[0-4]\d</td>
+          <td>[01]?\d?\d))</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ol>]]></content><author><name>THEPASSION</name></author><category term="regular" /><summary type="html"><![CDATA[Common Regular expression]]></summary></entry></feed>

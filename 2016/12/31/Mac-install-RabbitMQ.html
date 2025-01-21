@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>How to Install RabbitMQ in Mac | THEPASSION</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="How to Install RabbitMQ in Mac" />
+<meta name="author" content="THEPASSION" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Install the Server 下载地址 解压 tar zxvf rabbitmq-server-mac-standalone-3.6.6.tar.gz 启动rabbitMQ cd rabbitmq_server-3.6.6/sbin /rabbitmq-server restart" />
+<meta property="og:description" content="Install the Server 下载地址 解压 tar zxvf rabbitmq-server-mac-standalone-3.6.6.tar.gz 启动rabbitMQ cd rabbitmq_server-3.6.6/sbin /rabbitmq-server restart" />
+<meta property="og:site_name" content="THEPASSION" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-12-31T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="How to Install RabbitMQ in Mac" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"THEPASSION"},"dateModified":"2016-12-31T00:00:00+00:00","datePublished":"2016-12-31T00:00:00+00:00","description":"Install the Server 下载地址 解压 tar zxvf rabbitmq-server-mac-standalone-3.6.6.tar.gz 启动rabbitMQ cd rabbitmq_server-3.6.6/sbin /rabbitmq-server restart","headline":"How to Install RabbitMQ in Mac","mainEntityOfPage":{"@type":"WebPage","@id":"/2016/12/31/Mac-install-RabbitMQ.html"},"url":"/2016/12/31/Mac-install-RabbitMQ.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="icon" type="image/png" href="/assets/favicon.png" /><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="THEPASSION" /></head><body><div class="site-header">
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/">THEPASSION<b class="command_prompt"></b><b class="blinking_cursor">_</b></a>
+    <span class="social_links">
+        <a class="color-purple-hover" href="https://github.com/yosalo"><i class="fab fa-github-square"></i></a>
+    </span>
+  </div>
+</div>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        
+  <div class="author-box">
+  <img src="https://0.gravatar.com/avatar/4b93c6af05d990feb3cc652580910761ae7d66b7f208000cb01d78665a501279?size=256" class="author-avatar" alt="Avatar" />
+  我的惆怅几时荡漾起微恙的涟漪<br> 于风中，于梦里，化作尘泥落红，只余香如故。
+
+</div>
+
+
+<div class="post">
+  <h1 class="post-title">How to Install RabbitMQ in Mac</h1>
+  
+  <div class="post-tags">
+      
+      <a class="tag" href="/tag/rabbitmq/">rabbitmq</a>
+      
+  </div>
+  
+  <div class="post-date">Published on 31 Dec 2016</div>
+  
+  <h1 id="install-the-server">Install the Server</h1>
+<ul>
+  <li><a href="https://www.rabbitmq.com/releases/rabbitmq-server/v3.6.6/rabbitmq-server-mac-standalone-3.6.6.tar.xz">下载地址</a></li>
+  <li>解压 tar zxvf rabbitmq-server-mac-standalone-3.6.6.tar.gz</li>
+  <li>启动rabbitMQ cd rabbitmq_server-3.6.6/sbin /rabbitmq-server restart</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#在这里启动过程中会有提示错误，这是因为操作会将本电脑名当作域名进行解析，所以需要将主机名和IP域名进行绑定</span>
+vim /etc/hosts
+<span class="c">#然后将本电脑的名字绑定，然后保存退出</span>
+<span class="c">#Installation with Homebrew</span>
+brew <span class="nb">install </span>rabbitmq
+<span class="c">#耐心等待，安装完成之后需要添加环境变量。</span>
+vim .bash_profile
+<span class="c">#将下列信息添加到.bash_profile中</span>
+<span class="c">#RabbitMQ Config</span>
+<span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/usr/local/sbin
+<span class="c">#编辑完成之后按esc输入:wq保存，使配置立即生效</span>
+<span class="nb">source</span> ~/.bash_profile
+<span class="c">#启动服务</span>
+rabbitmq-server</code></pre></figure>
+
+<blockquote>
+  <p>此时应该可以看到登录网站，如果不行，则在host添加localhost指向127.0.0.1</p>
+</blockquote>
+
+<ul>
+  <li>由于账号guest具有所有的操作权限，并且又是默认账号，出于安全因素的考虑，guest用户只能通过localhost登陆使用，并建议修改guest用户的密码以及新建其他账号管理使用rabbitmq。</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#创建账号</span>
+rabbitmqctl add_user Salo 123456
+<span class="c">#设置用户角色</span>
+rabbitmqctl  set_user_tags  Salo  administrator
+<span class="c">#设置用户权限</span>
+rabbitmqctl set_permissions <span class="nt">-p</span> <span class="s2">"/"</span> Salo <span class="s2">".*"</span> <span class="s2">".*"</span> <span class="s2">".*"</span>
+<span class="c">#设置完成后可以查看当前用户和角色(需要开启服务)</span>
+rabbitmqctl list_users</code></pre></figure>
+
+<p>​</p>
+
+<p>​</p>
+
+<ul>
+  <li>RabbitMQ常用操作</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#新增用户</span>
+rabbitmqctl  add_user  Username  Password
+<span class="c">#删除用户</span>
+rabbitmqctl  delete_user  Username
+<span class="c">#修改用户的密码</span>
+rabbitmqctl  change_password  Username  Newpassword
+<span class="c">#查看当前用户列表</span>
+rabbitmqctl  list_users</code></pre></figure>
+
+<ul>
+  <li>RabbitMQ角色
+    <blockquote>
+      <p>超级管理员(administrator)</p>
+
+      <p>监控者(monitoring)</p>
+
+      <p>策略制定者(policymaker)</p>
+
+      <p>普通管理者(management)</p>
+
+      <p>其它</p>
+    </blockquote>
+  </li>
+  <li>设置用户角色，也可以给同一用户设置多个角色</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#User用户名 Tag角色</span>
+rabbitmqctl  set_user_tags  User  Tag
+rabbitmqctl  set_user_tags  username  monitoring  policymaker</code></pre></figure>
+
+<ul>
+  <li>用户权限
+用户权限指的是用户对exchange，queue的操作权限，包括配置权限，读写权限。配置权限会影响到exchange，queue的声明和删除。读写权限影响到从queue里取消息，向exchange发送消息以及queue和exchange的绑定(bind)操作。</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#设置用户权限</span>
+rabbitmqctl  set_permissions  <span class="nt">-p</span>  VHostPath  User  ConfP  WriteP  ReadP
+<span class="c">#查看(指定hostpath)所有用户的权限信息</span>
+rabbitmqctl  list_permissions  <span class="o">[</span><span class="nt">-p</span>  VHostPath]
+<span class="c">#查看指定用户的权限信息</span>
+rabbitmqctl  list_user_permissions  User
+<span class="c">#清除用户的权限信息</span>
+rabbitmqctl  clear_permissions  <span class="o">[</span><span class="nt">-p</span> VHostPath]  User</code></pre></figure>
+
+</div>
+
+
+<div class="comments">
+<div id="disqus_thread"></div>
+<script>
+ var disqus_config = function () {
+     this.page.url = '/2016/12/31/Mac-install-RabbitMQ.html';
+     this.page.identifier = '/2016/12/31/Mac install RabbitMQ';
+     this.page.title = 'How to Install RabbitMQ in Mac';
+ };
+
+ (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+     var d = document, s = d.createElement('script');
+
+     s.src = '//blog-vwbx2ac6qz.disqus.com/embed.js';
+
+     s.setAttribute('data-timestamp', +new Date());
+     (d.head || d.body).appendChild(s);
+ })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+</div>
+
+
+
+
+<div class="related">
+  <h2>related posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2024/02/18/rvm-install-ruby-on-macOS.html">
+            rvm install ruby on macOS
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2020/11/13/macOS-brew-install-consul.html">
+            macOS brew install consul
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2019/09/13/tools-for-osx.html">
+            tools for macOS
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+  
+  <h2>all tags</h2>
+  <div class="tag-cloud"><a href="/tag/git/" class="set-3">git</a> <a href="/tag/jekyll/" class="set-2">jekyll</a> <a href="/tag/life/" class="set-5">life</a> <a href="/tag/macos/" class="set-3">macos</a> <a href="/tag/rabbitmq/" class="set-1">rabbitmq</a> <a href="/tag/regular/" class="set-1">regular</a></div>
+  
+
+
+
+
+<script>
+  let i = 0;
+  const text = '';
+  const speed = parseInt('50');
+  
+  function typeWriter() {
+    if (i < text.length) {
+      document.getElementById('animated-post-description').innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    }
+  }
+
+  document.getElementById('animated-post-description').style.display = 'initial';
+  typeWriter();
+
+  // Image modal
+  var $imgs = [];
+  $('img').each(function(idx) {
+    var obj = {
+      src: $(this).attr('src')
+    }
+    $imgs.push(obj);
+    var elem = $(this);
+    $(this).click(function() {
+      $('.modal').magnificPopup('open', idx);
+    });
+  });
+
+  $('.modal').magnificPopup({
+    items: $imgs,
+    type: 'image',
+    closeOnContentClick: true,
+    mainClass: 'mfp-img-mobile',
+    image: {
+      verticalFit: true
+    }
+    
+  });
+</script>
+
+      </div>
+    </main><footer class="site-footer">
+  <div class="wrapper">
+    <div class="credits">© 2024 made with <i class="fas fa-heart"></i><div class="toggleWrapper">
+    <input type="checkbox" class="dn" id="theme-toggle" onclick="modeSwitcher()" checked />
+    <label for="theme-toggle" class="toggle">
+    <span class="toggle__handler">
+      <span class="crater crater--1"></span>
+      <span class="crater crater--2"></span>
+      <span class="crater crater--3"></span>
+    </span>
+        <span class="star star--1"></span>
+        <span class="star star--2"></span>
+        <span class="star star--3"></span>
+        <span class="star star--4"></span>
+        <span class="star star--5"></span>
+        <span class="star star--6"></span>
+    </label>
+</div>
+<script type="text/javascript">
+const theme = localStorage.getItem('theme');
+
+if (theme === "light") {
+    document.documentElement.setAttribute('data-theme', 'light');
+} else {
+    document.documentElement.setAttribute('data-theme', 'dark');
+}
+const userPrefers = getComputedStyle(document.documentElement).getPropertyValue('content');
+
+function activateDarkTheme() {
+    document.getElementById('theme-toggle').checked = true;
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('theme--dark');
+    document.documentElement.classList.remove('theme--light');
+	document.getElementById("theme-toggle").className = 'light';
+	window.localStorage.setItem('theme', 'dark');
+}
+
+function activateLightTheme() {
+    document.getElementById('theme-toggle').checked = false;
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.add('theme--light');
+    document.documentElement.classList.remove('theme--dark');
+	document.getElementById("theme-toggle").className = 'dark';
+	window.localStorage.setItem('theme', 'light');
+}
+
+if (theme === "dark") {
+    activateDarkTheme();
+} else if (theme === "light") {
+    activateLightTheme();
+} else if  (userPrefers === "light") {
+    activateDarkTheme();
+} else {
+    activateDarkTheme();
+}
+
+function modeSwitcher() {
+	let currentMode = document.documentElement.getAttribute('data-theme');
+	if (currentMode === "dark") {
+	    activateLightTheme();
+	} else {
+	    activateDarkTheme();
+	}
+}
+</script></div>
+  </div>
+</footer>
+
+
+<script>
+      window.FontAwesomeConfig = {
+        searchPseudoElements: true
+      }
+    </script>
+  </body>
+
+</html>
